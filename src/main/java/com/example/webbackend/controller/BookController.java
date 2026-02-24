@@ -115,5 +115,12 @@ public class BookController {
 
     }
 
+    // delete book
+    @DeleteMapping("/books/{id}")
+    public List<Book> deleteBook(@PathVariable Long id){
+        books.removeIf(book -> book.getId().equals(id));
+        return books;
+    }
+
 
 }

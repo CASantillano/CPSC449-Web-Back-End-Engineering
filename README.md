@@ -20,3 +20,6 @@
 
 ### Add a new book:
 ![PostNewBook](images/postNewBook.png)
+
+### Delete a book by id:
+![DeleteBook](images/DeleteBook.png)
