@@ -24,6 +24,9 @@
 ### Update a book at id:
 ![PutBook](images/PutBookbyID.png)
 
+### Partially update a book at id:
+![PatchBook](images/PatchBook.png)
+
 ### Delete a book by id:
 ![DeleteBook](images/DeleteBook.png)
 

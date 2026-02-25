@@ -131,6 +131,26 @@ public class BookController {
         return books;
     }
 
+    // partial update
+    @PatchMapping("/books/{id}")
+    public List<Book> partialUpdateBook(
+            @PathVariable Long id,
+            @RequestBody Book book
+    ){
+        Book old = getBook(id);
+
+        if(book.getPrice() != null){
+            old.setPrice(book.getPrice());
+        }
+        if(book.getTitle() != null){
+            old.setTitle(book.getTitle());
+        }
+        if(book.getAuthor() != null){
+            old.setAuthor(book.getAuthor());
+        }
+        return books;
+    }
+
     // get books, with pagination
     @GetMapping("/books/paginated")
     public List<Book> getBooksPages(
