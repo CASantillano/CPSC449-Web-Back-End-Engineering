@@ -115,6 +115,20 @@ public class BookController {
 
     }
 
+    // update book
+    @PutMapping("/books/{id}")
+    public List<Book> updateBook(
+            @PathVariable Long id,
+            @RequestBody Book book
+    ){
+        Book old = getBook(id);
+        old.setId(book.getId());
+        old.setTitle(book.getTitle());
+        old.setAuthor(book.getAuthor());
+        old.setPrice(book.getPrice());
+        return books;
+    }
+
     // delete book
     @DeleteMapping("/books/{id}")
     public List<Book> deleteBook(@PathVariable Long id){

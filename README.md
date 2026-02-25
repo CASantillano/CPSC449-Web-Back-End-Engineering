@@ -21,5 +21,8 @@
 ### Add a new book:
 ![PostNewBook](images/postNewBook.png)
 
+### Update a book at id:
+![PutBook](images/PutBookbyID.png)
+
 ### Delete a book by id:
 ![DeleteBook](images/DeleteBook.png)
