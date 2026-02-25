@@ -7,7 +7,7 @@
 * PUT /api/books/{id}
 * PATCH /api/books/{id}
 * DELETE /api/books/{id}
-* GET /api/books?page=&size=
+* GET /api/books/paginated?page=&size=
 * GET /api/books?author=&sort=&page=&size
 
 ---
@@ -26,3 +26,7 @@
 
 ### Delete a book by id:
 ![DeleteBook](images/DeleteBook.png)
+
+### Get books with pagination
+![GetPaginatedBooks2](images/GetPaginatedBooks2.png)
+![GetPaginatedBooks1](images/GetPaginatedBooks1.png)

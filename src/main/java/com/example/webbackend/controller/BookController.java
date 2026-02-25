@@ -3,9 +3,11 @@ package com.example.webbackend.controller;
 import com.example.webbackend.entity.Book;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 @RestController
@@ -127,6 +129,16 @@ public class BookController {
         old.setAuthor(book.getAuthor());
         old.setPrice(book.getPrice());
         return books;
+    }
+
+    // get books, with pagination
+    @GetMapping("/books/paginated")
+    public List<Book> getBooksPages(
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "5") int size
+    ){
+         return books.stream().skip((long)page * size)
+                 .limit(size).collect(Collectors.toList());
     }
 
     // delete book
