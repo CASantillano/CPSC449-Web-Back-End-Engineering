@@ -8,7 +8,7 @@
 * PATCH /api/books/{id}
 * DELETE /api/books/{id}
 * GET /api/books/paginated?page=&size=
-* GET /api/books?author=&sort=&page=&size
+* GET /api/books/advanced?author=&sort=&page=&size
 
 ---
 ## Screenshots
@@ -33,3 +33,6 @@
 ### Get books with pagination
 ![GetPaginatedBooks2](images/GetPaginatedBooks2.png)
 ![GetPaginatedBooks1](images/GetPaginatedBooks1.png)
+
+### Get books filtered, sorted, and paginated
+![GetAdvancedBooks](images/GetAdvancedBook.png)

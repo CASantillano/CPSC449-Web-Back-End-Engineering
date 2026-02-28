@@ -161,6 +161,50 @@ public class BookController {
                  .limit(size).collect(Collectors.toList());
     }
 
+    // Advanced get books
+    @GetMapping("/books/advanced")
+    public List<Book> getAdvancedPages(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false, defaultValue = "title") String sortBy,
+            @RequestParam(required = false, defaultValue = "asc") String order,
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "5") int size
+    ){
+        List<Book> filtered = books.stream()
+                .filter(book -> title == null || book.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .filter(book -> minPrice == null || book.getPrice() >= minPrice)
+                .filter(book -> maxPrice == null || book.getPrice() <= maxPrice)
+                .collect(Collectors.toList());
+
+        Comparator<Book> comparator;
+
+        switch (sortBy.toLowerCase()) {
+            case "author":
+                comparator = Comparator.comparing(Book::getAuthor);
+                break;
+            case "price":
+                comparator = Comparator.comparing(Book::getPrice);
+                break;
+            default:
+                comparator = Comparator.comparing(Book::getTitle);
+        }
+
+        if ("desc".equalsIgnoreCase(order)) {
+            comparator = comparator.reversed();
+        }
+
+        List<Book> sorted = filtered.stream()
+                .sorted(comparator)
+                .collect(Collectors.toList());
+
+        return sorted.stream()
+                .skip((long) page * size)
+                .limit(size)
+                .collect(Collectors.toList());
+    }
+
     // delete book
     @DeleteMapping("/books/{id}")
     public List<Book> deleteBook(@PathVariable Long id){
