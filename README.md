@@ -8,7 +8,7 @@
 * PATCH /api/books/{id}
 * DELETE /api/books/{id}
 * GET /api/books/paginated?page=&size=
-* GET /api/books/advanced?author=&sort=&page=&size
+* GET /api/books/advanced?title=&minPrice=&sortBy=&order=&page=&size
 
 ---
 ## Screenshots
